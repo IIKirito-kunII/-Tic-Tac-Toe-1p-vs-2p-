@@ -6,6 +6,13 @@ def printboard(xState,zState):
     print(f"            --|---|---")
     print(f"            {s(6)} | {s(7)} | {s(8)} ")
 
+def enterValue(xState,zState):
+    while True:
+        value = int(input("Please enter a value: ")) - 1
+        if value < 0 or value > 8: print("!Invalid value!")
+        elif xState[value]==1 or zState[value]==1: print("!Position already occupied!")
+        else: return value
+
 def checkWin(xState,zState):
     win=[[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
     for line in win:
@@ -24,17 +31,11 @@ def main():
         printboard(xState,zState)
         if(turn==1):
             print("X's Chance:")
-            value=int(input("Please enter a value: "))-1
-            if(value<0 or value>8):
-                print("!Invalid value!")
-                value=int(input("Please enter a value: "))-1
+            value=enterValue(xState,zState)
             xState[value] = 1
         else:
             print("O's Chance:")
-            value=int(input("Please enter a value: "))-1
-            if(value<0 or value>8):
-                print("!Invalid value!")
-                value=int(input("Please enter a value: "))-1
+            value=enterValue(xState,zState)
             zState[value] = 1
         if checkWin(xState,zState) or checkDraw(xState,zState):
             printboard(xState,zState)
