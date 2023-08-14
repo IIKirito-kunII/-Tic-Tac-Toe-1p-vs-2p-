@@ -25,10 +25,16 @@ def main():
         if(turn==1):
             print("X's Chance:")
             value=int(input("Please enter a value: "))-1
+            if(value<0 or value>8):
+                print("!Invalid value!")
+                value=int(input("Please enter a value: "))-1
             xState[value] = 1
         else:
             print("O's Chance:")
             value=int(input("Please enter a value: "))-1
+            if(value<0 or value>8):
+                print("!Invalid value!")
+                value=int(input("Please enter a value: "))-1
             zState[value] = 1
         if checkWin(xState,zState) or checkDraw(xState,zState):
             printboard(xState,zState)
