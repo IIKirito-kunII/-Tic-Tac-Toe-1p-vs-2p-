@@ -22,6 +22,12 @@ def checkDraw(xState,zState):
     if all(xState[i]==1 or zState[i]==1 for i in range(9)): return True
     return False
 
+def restart():
+        option = input("Restart[y/n]: ")
+        if (option == 'y'): main()
+        elif (option == 'n'): exit()
+        else: print("Invalid Option!"); restart()
+
 def main():
     xState=[0, 0, 0, 0, 0, 0, 0, 0, 0]
     zState=[0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -47,10 +53,7 @@ def main():
             else: print("---------!!Match Draw!!-----------")
             break
         else: turn = 1-turn
-    
-    option = input("Restart[y/n]: ")
-    if (option == 'y'): main()
-    else: exit()
+    restart()
 
 if __name__== "__main__":
     main()
